@@ -54,32 +54,31 @@ class Nba
 			if (game.away_team.full_name.eql?(self.favorite_team) || game.home_team.full_name.eql?(self.favorite_team))
         return game
       end
-		end
-		false
-	end
-
-	def send_mail game
-		begin
-			message = {
-				"subject" => "NBA #{self.favorite_team} game infos",
-				"text" => "Lolilol",
-				"from_name" => "NBA Bot",
-				"from_email" => "no-reply@nbabot.fr",
-				"to" => [{
-					"name" => "Recipent test",
-					"type" => "to",
-					"email" => "fabien.dobat@gmail.com"
-					}],
-          "html" => "#{game.away_team.full_name} vs. #{game.home_team.full_name} at #{game.start_date_time.strftime('%l:%M %p')}"
-        }
-
-      result = @mandrill.messages.send message
-      ap result
-
-    rescue Mandrill::Error => e
-      puts "A mandrill error occurred: #{e.class} - #{e.message}"
     end
+    false
   end
+
+  def send_mail game
+    begin
+     message = {
+      "subject" => "NBA #{self.favorite_team} game infos",
+      "from_name" => "NBA Bot",
+      "from_email" => "no-reply@nbabot.fr",
+      "to" => [{
+       "name" => "Recipent test",
+       "type" => "to",
+       "email" => "fabien.dobat@gmail.com"
+       }],
+       "html" => "#{game.away_team.full_name} vs. #{game.home_team.full_name} at #{game.start_date_time.strftime('%l:%M %p')}"
+     }
+
+     result = @mandrill.messages.send message
+     ap result
+
+   rescue Mandrill::Error => e
+    puts "A mandrill error occurred: #{e.class} - #{e.message}"
+  end
+end
 
 end
 
