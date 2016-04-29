@@ -8,7 +8,7 @@ require 'mandrill'
 
 class Nba
 
-	attr_accessor :favorite_team
+	 attr_accessor :favorite_team
 
 	def initialize
 		Xmlstats.api_key = ENV['XMLSTATS_API_KEY']
