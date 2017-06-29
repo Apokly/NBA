@@ -1,6 +1,6 @@
-require 'awesome_print'
 # frozen_string_literal: true
 
+require 'awesome_print'
 require 'xmlstats'
 require 'date'
 require 'json'
